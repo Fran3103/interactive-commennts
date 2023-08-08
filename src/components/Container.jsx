@@ -1,17 +1,29 @@
 
+import { useState } from 'react'
 import data from '../data/data.json'
 import Cards from './Cards'
-import Replies from './Replies'
 
 import Users from './Users'
 
 
 const Container = () => {
 
+  const [comentario, setComentario] = useState('') 
+
+  const agregar = newComment => {
+
+    if(newComment.texto.trim()){
+      newComment.texto = newComment.texto.trim();
+      const actualizar = [newComment, ...newComment]
+      setComentario(actualizar)
+    }
+    
+
+}
+
 
   return (
     <div>
-        <div >
         {
             data.comments.map( cards => 
                 <Cards
@@ -22,50 +34,21 @@ const Container = () => {
                 image={cards.user.image.png}
                 score={cards.score}
 
-               
+                
 
                
                 />)
-
-              
         }
-        <div className="reply">
-        {
-            data.comments.map(replys=> 
-                replys.replies.map(reply=>
-                    
-                    <Replies
-                    key={reply.id}
-                    name={reply.user.username}
-                    image={reply.user.image.png}
-                    comment={reply.content}
-                    date={reply.createdAt}
-                    score={reply.score}
-                    reply={reply.replyingTo}
-
-                    
-                    />)
-                
-               
-                
-                )
-        }
-        </div>
-        
-        </div>
-        
 
         {
          
             <Users
-             
+            onSubmit={agregar}
             image={data.currentUser.image.png}
             username={data.currentUser.username}
             
             />
         }
-
-       
 
         
     </div>
