@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+// import { useState } from 'react'
 import data from '../data/data.json'
 import Cards from './Cards'
 
@@ -8,18 +8,18 @@ import Users from './Users'
 
 const Container = () => {
 
-  const [comentario, setComentario] = useState('') 
+  // const [comentario, setComentario] = useState('') 
 
-  const agregar = newComment => {
+  // const agregar = newComment => {
 
-    if(newComment.texto.trim()){
-      newComment.texto = newComment.texto.trim();
-      const actualizar = [newComment, ...newComment]
-      setComentario(actualizar)
-    }
+  //   if(newComment.texto.trim()){
+  //     newComment.texto = newComment.texto.trim();
+  //     const actualizar = [newComment, ...newComment]
+  //     setComentario(actualizar)
+  //   }
     
 
-}
+
 
 
   return (
@@ -43,7 +43,7 @@ const Container = () => {
         {
          
             <Users
-            onSubmit={agregar}
+            // onSubmit={agregar}
             image={data.currentUser.image.png}
             username={data.currentUser.username}
             
